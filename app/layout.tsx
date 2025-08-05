@@ -8,7 +8,7 @@ import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "MediCare - Your Trusted Healthcare Companion",
+  title: "PractoCare - Your Trusted Healthcare Companion",
   description: "Connect with qualified doctors, book appointments, and get online consultations",
     generator: 'nextjs'
 }

@@ -53,7 +53,7 @@ export function Navbar() {
               href={user.role === "doctor" ? "/doctor/dashboard" : "/"}
               className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white hover:text-teal-300 transition-colors duration-300"
             >
-              PatBook
+              DocBook
             </Link>
           </div>
 

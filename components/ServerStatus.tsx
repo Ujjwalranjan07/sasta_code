@@ -10,10 +10,18 @@ export function ServerStatus() {
   useEffect(() => {
     const checkServer = async () => {
       try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => {
+          controller.abort();
+          setStatus("disconnected");
+        }, 5000);
+        
         const response = await fetch("https://doctor-api-u6mn.onrender.com/doctors", {
           method: "HEAD",
-          signal: AbortSignal.timeout(5000), // 5 second timeout
-        })
+          signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
         setStatus(response.ok ? "connected" : "disconnected")
       } catch (error) {
         setStatus("disconnected")
@@ -47,8 +55,7 @@ export function ServerStatus() {
             </p>
             {status === "disconnected" && (
               <p className="text-sm text-red-700 mt-1">
-                Please run <code className="bg-red-200 px-2 py-1 rounded text-red-900">npm run json-server</code> in a
-                separate terminal
+                Please check your internet connection or try again later.
               </p>
             )}
           </div>

@@ -16,22 +16,36 @@ export default function DebugPage() {
     setError("")
 
     try {
+      // Create controller for timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => {
+        controller.abort();
+        throw new Error("Connection timeout. Server is not responding.");
+      }, 5000);
+      
       // Test doctors endpoint
-      const doctorsResponse = await fetch("https://doctor-api-u6mn.onrender.com/doctors")
+      const doctorsResponse = await fetch("https://doctor-api-u6mn.onrender.com/doctors", {
+        signal: controller.signal
+      })
       if (!doctorsResponse.ok) {
+        clearTimeout(timeoutId);
         throw new Error(`Doctors endpoint failed: ${doctorsResponse.status}`)
       }
       const doctorsData = await doctorsResponse.json()
       setDoctors(doctorsData)
 
       // Test patients endpoint
-            const patientsResponse = await fetch("https://doctor-api-u6mn.onrender.com/patients")
+      const patientsResponse = await fetch("https://doctor-api-u6mn.onrender.com/patients", {
+        signal: controller.signal
+      })
       if (!patientsResponse.ok) {
+        clearTimeout(timeoutId);
         throw new Error(`Patients endpoint failed: ${patientsResponse.status}`)
       }
       const patientsData = await patientsResponse.json()
       setPatients(patientsData)
 
+      clearTimeout(timeoutId);
       setServerStatus("connected")
     } catch (err) {
       setServerStatus("disconnected")
@@ -85,15 +99,12 @@ export default function DebugPage() {
 
               {serverStatus === "disconnected" && (
                 <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                  <p className="text-yellow-800 font-medium">To fix this issue:</p>
+                  <p className="text-yellow-800 font-medium">Troubleshooting steps:</p>
                   <ol className="text-yellow-700 mt-2 space-y-1 list-decimal list-inside">
-                    <li>Open a new terminal</li>
-                    <li>Navigate to your project directory</li>
-                    <li>
-                      Run: <code className="bg-yellow-200 px-2 py-1 rounded">npm run json-server</code>
-                    </li>
-                    <li>Wait for "JSON Server is running on port 3001"</li>
-                    <li>Refresh this page</li>
+                    <li>Check your internet connection</li>
+                    <li>The API server might be temporarily down</li>
+                    <li>Try again in a few minutes</li>
+                    <li>If the problem persists, contact support</li>
                   </ol>
                 </div>
               )}

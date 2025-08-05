@@ -283,16 +283,16 @@ export default function DoctorCalendarView({ appointments, onReschedule, onUpdat
                   <span className="sr-only">Reschedule</span>
                 </Button>
               </DialogTrigger>
-              <DialogContent className="bg-slate-800 border-slate-700">
+              <DialogContent className="bg-white border-gray-200">
                 <DialogHeader>
-                  <DialogTitle className="text-white">Reschedule Appointment</DialogTitle>
-                  <DialogDescription className="text-slate-400">
+                  <DialogTitle className="text-gray-800">Reschedule Appointment</DialogTitle>
+                  <DialogDescription className="text-gray-600">
                     Change the date and time for {appointment.patientName}'s appointment
                   </DialogDescription>
                 </DialogHeader>
                 <div className="space-y-4">
                   <div>
-                    <Label htmlFor="date" className="text-slate-300">
+                    <Label htmlFor="date" className="text-gray-700">
                       New Date
                     </Label>
                     <Input
@@ -300,18 +300,18 @@ export default function DoctorCalendarView({ appointments, onReschedule, onUpdat
                       type="date"
                       value={rescheduleDate}
                       onChange={(e) => setRescheduleDate(e.target.value)}
-                      className="bg-slate-700 border-slate-600 text-white"
+                      className="bg-white border-gray-300 text-gray-800"
                     />
                   </div>
                   <div>
-                    <Label htmlFor="time" className="text-slate-300">
+                    <Label htmlFor="time" className="text-gray-700">
                       New Time
                     </Label>
                     <Select value={rescheduleTime} onValueChange={setRescheduleTime}>
-                      <SelectTrigger className="bg-slate-700 border-slate-600 text-white">
+                      <SelectTrigger className="bg-white border-gray-300 text-gray-800">
                         <SelectValue placeholder="Select time" />
                       </SelectTrigger>
-                      <SelectContent className="bg-slate-700 border-slate-600">
+                      <SelectContent className="bg-white border-gray-300">
                         {Array.from({ length: 16 }, (_, i) => {
                           // 7 AM to 10 PM (15 hours * 2 slots/hour)
                           const hour = Math.floor(i / 2) + 7 // Start from 7 AM
@@ -336,7 +336,7 @@ export default function DoctorCalendarView({ appointments, onReschedule, onUpdat
                     </Button>
                     <Button
                       variant="outline"
-                      className="border-slate-600 text-slate-300 bg-transparent"
+                      className="border-gray-300 text-gray-700 bg-transparent"
                       onClick={() => setSelectedAppointment(null)}
                     >
                       Cancel
@@ -361,7 +361,7 @@ export default function DoctorCalendarView({ appointments, onReschedule, onUpdat
   }, [])
 
   return (
-    <div className="h-[80vh] min-h-[600px] bg-slate-900/80 rounded-lg p-4 shadow-xl">
+    <div className="h-[80vh] min-h-[600px] bg-white rounded-lg p-4 shadow-xl border border-gray-200">
       <DnDCalendar
         key={currentCalendarDate.toISOString()}
         localizer={localizer}
@@ -408,10 +408,10 @@ export default function DoctorCalendarView({ appointments, onReschedule, onUpdat
 
       {/* Confirmation Dialog for Cancellation */}
       <Dialog open={isCancelConfirmOpen} onOpenChange={setIsCancelConfirmOpen}>
-        <DialogContent className="bg-slate-800 border-slate-700">
+        <DialogContent className="bg-white border-gray-200">
           <DialogHeader>
-            <DialogTitle className="text-white">Confirm Cancellation</DialogTitle>
-            <DialogDescription className="text-slate-400">
+            <DialogTitle className="text-gray-800">Confirm Cancellation</DialogTitle>
+            <DialogDescription className="text-gray-600">
               Are you sure you want to cancel the appointment for {appointmentToCancel?.patientName} on{" "}
               {appointmentToCancel?.date} at {appointmentToCancel?.time}? This action cannot be undone.
             </DialogDescription>
@@ -419,7 +419,7 @@ export default function DoctorCalendarView({ appointments, onReschedule, onUpdat
           <DialogFooter>
             <Button
               variant="outline"
-              className="border-slate-600 text-slate-300 bg-transparent"
+              className="border-gray-300 text-gray-700 bg-transparent"
               onClick={() => setIsCancelConfirmOpen(false)}
             >
               No, Keep It
@@ -433,15 +433,15 @@ export default function DoctorCalendarView({ appointments, onReschedule, onUpdat
 
       {/* Patient Details Dialog */}
       <Dialog open={isPatientDetailsDialogOpen} onOpenChange={setIsPatientDetailsDialogOpen}>
-        <DialogContent className="bg-slate-800 border-slate-700">
+        <DialogContent className="bg-white border-gray-200">
           <DialogHeader>
-            <DialogTitle className="text-white">Patient Details</DialogTitle>
-            <DialogDescription className="text-slate-400">
+            <DialogTitle className="text-gray-800">Patient Details</DialogTitle>
+            <DialogDescription className="text-gray-600">
               Information for {selectedPatientDetails?.name}
             </DialogDescription>
           </DialogHeader>
           {selectedPatientDetails && currentDetailsAppointment ? (
-            <div className="space-y-4 text-slate-300">
+            <div className="space-y-4 text-gray-700">
               <div className="flex items-center">
                 <User className="w-5 h-5 mr-2 text-teal-400" />
                 <span className="font-semibold">Name:</span> {selectedPatientDetails.name}
@@ -461,7 +461,7 @@ export default function DoctorCalendarView({ appointments, onReschedule, onUpdat
               {/* You can add more patient details here if available in your Patient interface */}
             </div>
           ) : (
-            <div className="text-slate-400">Loading patient details...</div>
+            <div className="text-gray-500">Loading patient details...</div>
           )}
           <DialogFooter className="flex flex-col sm:flex-row sm:justify-end gap-2 mt-4">
             {/* Buttons for PENDING appointments */}
@@ -541,7 +541,7 @@ export default function DoctorCalendarView({ appointments, onReschedule, onUpdat
               currentDetailsAppointment?.status === "cancelled") && (
               <Button
                 variant="outline"
-                className="border-slate-600 text-slate-300 bg-transparent"
+                className="border-gray-300 text-gray-700 bg-transparent"
                 onClick={() => setIsPatientDetailsDialogOpen(false)}
               >
                 Close
@@ -562,16 +562,16 @@ export default function DoctorCalendarView({ appointments, onReschedule, onUpdat
           }
         }}
       >
-        <DialogContent className="bg-slate-800 border-slate-700">
+        <DialogContent className="bg-white border-gray-200">
           <DialogHeader>
-            <DialogTitle className="text-white">Reschedule Appointment</DialogTitle>
-            <DialogDescription className="text-slate-400">
+            <DialogTitle className="text-gray-800">Reschedule Appointment</DialogTitle>
+            <DialogDescription className="text-gray-600">
               Change the date and time for {selectedAppointment?.patientName}'s appointment
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
             <div>
-              <Label htmlFor="date" className="text-slate-300">
+              <Label htmlFor="date" className="text-gray-700">
                 New Date
               </Label>
               <Input
@@ -579,18 +579,18 @@ export default function DoctorCalendarView({ appointments, onReschedule, onUpdat
                 type="date"
                 value={rescheduleDate}
                 onChange={(e) => setRescheduleDate(e.target.value)}
-                className="bg-slate-700 border-slate-600 text-white"
+                className="bg-white border-gray-300 text-gray-800"
               />
             </div>
             <div>
-              <Label htmlFor="time" className="text-slate-300">
+              <Label htmlFor="time" className="text-gray-700">
                 New Time
               </Label>
               <Select value={rescheduleTime} onValueChange={setRescheduleTime}>
-                <SelectTrigger className="bg-slate-700 border-slate-600 text-white">
+                <SelectTrigger className="bg-white border-gray-300 text-gray-800">
                   <SelectValue placeholder="Select time" />
                 </SelectTrigger>
-                <SelectContent className="bg-slate-700 border-slate-600">
+                <SelectContent className="bg-white border-gray-300">
                   {Array.from({ length: 16 }, (_, i) => {
                     const hour = Math.floor(i / 2) + 7
                     const minute = (i % 2) * 30
@@ -614,7 +614,7 @@ export default function DoctorCalendarView({ appointments, onReschedule, onUpdat
               </Button>
               <Button
                 variant="outline"
-                className="border-slate-600 text-slate-300 bg-transparent"
+                className="border-gray-300 text-gray-700 bg-transparent"
                 onClick={() => setSelectedAppointment(null)}
               >
                 Cancel

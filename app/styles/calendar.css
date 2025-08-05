@@ -1,47 +1,49 @@
-/* React Big Calendar Dark Theme Overrides */
+/* React Big Calendar Light Theme Overrides */
 .rbc-calendar {
   font-family: inherit;
-  color: #e2e8f0; /* Light text for dark background */
+  color: #1e293b; /* Dark text for light background */
   height: 100%; /* Ensure calendar takes full height of its container */
   display: flex;
   flex-direction: column;
 }
 
 .rbc-header {
-  background-color: #1e293b; /* Darker header background */
-  color: #cbd5e1; /* Lighter text for headers */
-  border-bottom: 1px solid #475569; /* Visible border */
+  background-color: #f8fafc; /* Light header background */
+  color: #334155; /* Dark text for headers */
+  border-bottom: 1px solid #e2e8f0; /* Subtle border */
   padding: 10px 0;
+  font-weight: 600;
 }
 
 .rbc-day-bg {
-  background-color: #0f172a; /* Dark background for day cells */
-  border-right: 1px solid #334155; /* Visible vertical grid lines */
+  background-color: #ffffff; /* Light background for day cells */
+  border-right: 1px solid #f1f5f9; /* Subtle vertical grid lines */
 }
 
 /* Specific style for today's background */
 .rbc-day-bg.rbc-today {
-  background-color: #1a2433 !important; /* Slightly lighter dark background for today, ensure it overrides */
+  background-color: #f0f9ff !important; /* Light blue background for today, ensure it overrides */
 }
 
 .rbc-time-header .rbc-today {
-  background-color: #1a2433 !important; /* Darker background for today's header, ensure it overrides */
+  background-color: #f0f9ff !important; /* Light blue background for today's header, ensure it overrides */
 }
 
 .rbc-time-view .rbc-allday-cell {
-  background-color: #1e293b; /* Darker background for all-day cell */
+  background-color: #f8fafc; /* Light background for all-day cell */
 }
 
 .rbc-time-view .rbc-row-segment {
-  border-bottom: 1px solid #334155; /* Visible horizontal grid lines */
+  border-bottom: 1px solid #f1f5f9; /* Subtle horizontal grid lines */
 }
 
 .rbc-time-slot {
-  border-top: 1px solid #334155; /* Visible horizontal grid lines */
+  border-top: 1px solid #f1f5f9; /* Subtle horizontal grid lines */
 }
 
 .rbc-label {
-  color: #94a3b8; /* Label text color */
+  color: #64748b; /* Label text color */
+  font-weight: 500;
 }
 
 .rbc-current-time-indicator {
@@ -58,7 +60,7 @@
   font-size: 1.5rem; /* Even larger font size for main text */
   cursor: grab;
   min-height: 100px; /* Increased minimum height for events */
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6); /* Stronger shadow for prominence */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow for light theme */
   transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
   display: flex;
   flex-direction: column;
@@ -71,21 +73,21 @@
 
 .rbc-event:hover {
   transform: translateY(-4px); /* Slight lift on hover */
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .rbc-event.rbc-selected {
   background-color: #2563eb; /* Darker blue when selected */
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .rbc-off-range-bg {
-  background-color: #1e293b; /* Background for days outside the current week/month */
+  background-color: #f8fafc; /* Light background for days outside the current week/month */
 }
 
 /* Ensure today's column background is distinct and not overridden */
 .rbc-today {
-  background-color: #1a2433 !important; /* Use !important to ensure it overrides other rules */
+  background-color: #f0f9ff !important; /* Use !important to ensure it overrides other rules */
 }
 
 .rbc-toolbar {
@@ -94,34 +96,49 @@
   align-items: center;
   margin-bottom: 20px; /* More space below toolbar */
   padding: 10px;
-  background-color: #1e293b; /* Toolbar background */
+  background-color: #f8fafc; /* Light toolbar background */
   border-radius: 8px;
+  border: 1px solid #e2e8f0;
 }
 
 .rbc-toolbar button {
-  color: #cbd5e1; /* Toolbar button text */
-  background-color: #334155; /* Toolbar button background */
-  border: 1px solid #475569;
+  color: #334155; /* Dark text for toolbar buttons */
+  background-color: #ffffff; /* White button background */
+  border: 1px solid #e2e8f0;
   transition: all 0.2s ease-in-out;
   padding: 14px 22px; /* Even larger buttons */
   border-radius: 12px; /* More rounded buttons */
   font-size: 1.2rem;
   cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Style Today, Back, and Next buttons to be blue */
+.rbc-toolbar .rbc-btn-group:first-child button {
+  background-color: #3B82F6; /* Blue background */
+  color: white;
+  border-color: #3B82F6;
+}
+
+.rbc-toolbar .rbc-btn-group:first-child button:hover {
+  background-color: #2563EB; /* Darker blue on hover */
+  color: white;
+  border-color: #2563EB;
 }
 
 .rbc-toolbar button:hover {
-  background-color: #475569;
-  color: #e2e8f0;
+  background-color: #f1f5f9;
+  color: #0f172a;
 }
 
 .rbc-toolbar button.rbc-active {
-  background-color: #0d9488; /* Active button color (teal) */
+  background-color: #3B82F6; /* Active button color (blue) */
   color: white;
-  border-color: #0d9488;
+  border-color: #3B82F6;
 }
 
 .rbc-toolbar-label {
-  color: #e2e8f0; /* Toolbar label text */
+  color: #0f172a; /* Dark text for toolbar label */
   font-size: 1.8rem; /* Even larger label */
   font-weight: 700; /* Bolder label */
 }
@@ -161,22 +178,23 @@
 
 /* Time column styling */
 .rbc-time-content > div + div {
-  border-left: 1px solid #334155; /* Vertical lines between days */
+  border-left: 1px solid #f1f5f9; /* Subtle vertical lines between days */
 }
 
 .rbc-time-content {
-  border-top: 1px solid #334155; /* Top border for time content */
+  border-top: 1px solid #e2e8f0; /* Subtle top border for time content */
 }
 
 .rbc-timeslot-group {
-  border-bottom: 1px solid #334155; /* Horizontal lines for time slots */
+  border-bottom: 1px solid #f1f5f9; /* Subtle horizontal lines for time slots */
 }
 
 .rbc-time-gutter {
-  background-color: #1e293b; /* Background for the time column */
-  border-right: 1px solid #475569;
+  background-color: #f8fafc; /* Light background for the time column */
+  border-right: 1px solid #e2e8f0;
 }
 
 .rbc-time-gutter .rbc-label {
-  color: #cbd5e1; /* Time labels color */
+  color: #64748b; /* Time labels color */
+  font-weight: 500;
 }

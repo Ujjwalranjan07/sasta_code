@@ -12,7 +12,7 @@ const testimonials = [
     location: "Mumbai, Maharashtra",
     image: "/placeholder.svg?height=80&width=80",
     rating: 5,
-    text: "MediCare ne meri zindagi badal di! Video consultation ke through ghar baithe hi best doctors se mil gaya. Bahut convenient aur professional service hai.",
+    text: "PractoCare ne meri zindagi badal di! Video consultation ke through ghar baithe hi best doctors se mil gaya. Bahut convenient aur professional service hai.",
     specialty: "General Medicine",
     date: "2 weeks ago",
   },
@@ -45,7 +45,7 @@ const testimonials = [
     location: "Bangalore, Karnataka",
     image: "/placeholder.svg?height=80&width=80",
     rating: 5,
-    text: "Night shifts ke wajah se regular clinic jaana mushkil tha. MediCare ka 24/7 service aur online prescription system ne life easy kar diya.",
+    text: "Night shifts ke wajah se regular clinic jaana mushkil tha. PractoCare ka 24/7 service aur online prescription system ne life easy kar diya.",
     specialty: "Dermatology",
     date: "5 days ago",
   },
@@ -56,7 +56,7 @@ const testimonials = [
     location: "Hyderabad, Telangana",
     image: "/placeholder.svg?height=80&width=80",
     rating: 5,
-    text: "Pregnancy ke time regular checkups ke liye MediCare use kiya. Doctors bahut caring hain aur Hindi mein bhi explain karte hain. Highly recommended!",
+    text: "Pregnancy ke time regular checkups ke liye PractoCare use kiya. Doctors bahut caring hain aur Hindi mein bhi explain karte hain. Highly recommended!",
     specialty: "Gynecology",
     date: "1 week ago",
   },
@@ -67,7 +67,7 @@ const testimonials = [
     location: "Pune, Maharashtra",
     image: "/placeholder.svg?height=80&width=80",
     rating: 5,
-    text: "College ke time budget tight tha, lekin MediCare ke affordable consultation rates ne help ki. Quality healthcare accessible price mein mil gaya.",
+    text: "College ke time budget tight tha, lekin PractoCare ke affordable consultation rates ne help ki. Quality healthcare accessible price mein mil gaya.",
     specialty: "General Medicine",
     date: "4 days ago",
   },
@@ -158,7 +158,7 @@ export function TestimonialSection() {
             Our Patients Speak
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Real experiences from thousands of Indians who trust MediCare for their healthcare journey
+            Real experiences from thousands of Indians who trust PractoCare for their healthcare journey
           </p>
         </div>
 

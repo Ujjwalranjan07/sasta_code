@@ -2,12 +2,11 @@ import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 
 export function middleware(request: NextRequest) {
-  // Redirect root to auth if no user is logged in
-  if (request.nextUrl.pathname === "/") {
-    // This will be handled by the client-side routing
-    return NextResponse.next()
-  }
-
+  // Note: Authentication is handled client-side through the AuthContext and ProtectedRoute component
+  // This middleware only handles server-side routing
+  
+  // For server-side protection, we would check for authentication tokens here
+  // But since we're using client-side auth, we just pass through all requests
   return NextResponse.next()
 }
 

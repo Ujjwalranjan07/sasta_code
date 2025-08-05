@@ -58,7 +58,7 @@ export const authAPI = {
       const endpoint = role === "doctor" ? "doctors" : "patients"
       const response = await fetch(`${BASE_URL}/${endpoint}`)
       if (!response.ok) {
-        throw new Error("Server not responding. Please make sure JSON Server is running on port 3001.")
+        throw new Error("Server not responding. Please check your internet connection or try again later.")
       }
       const users = await response.json()
       const user = users.find((u: any) => u.email === email && u.password === password)
@@ -69,7 +69,7 @@ export const authAPI = {
       return { ...user, role }
     } catch (error) {
       if (error instanceof TypeError && error.message.includes("fetch")) {
-        throw new Error("Cannot connect to server. Please run 'npm run json-server' in a separate terminal.")
+        throw new Error("Cannot connect to server. Please check your internet connection or try again later.")
       }
       throw error
     }
@@ -98,13 +98,13 @@ export const authAPI = {
         }),
       })
       if (!response.ok) {
-        throw new Error("Server not responding. Please make sure JSON Server is running on port 3001.")
+        throw new Error("Server not responding. Please check your internet connection or try again later.")
       }
       const user = await response.json()
       return { ...user, role }
     } catch (error) {
       if (error instanceof TypeError && error.message.includes("fetch")) {
-        throw new Error("Cannot connect to server. Please run 'npm run json-server' in a separate terminal.")
+        throw new Error("Cannot connect to server. Please check your internet connection or try again later.")
       }
       throw error
     }
@@ -122,7 +122,7 @@ export const doctorsAPI = {
       return response.json()
     } catch (error) {
       if (error instanceof TypeError && error.message.includes("fetch")) {
-        throw new Error("Cannot connect to server. Please run 'npm run json-server' in a separate terminal.")
+        throw new Error("Cannot connect to server. Please check your internet connection or try again later.")
       }
       throw error
     }
@@ -136,7 +136,7 @@ export const doctorsAPI = {
       return response.json()
     } catch (error) {
       if (error instanceof TypeError && error.message.includes("fetch")) {
-        throw new Error("Cannot connect to server. Please run 'npm run json-server' in a separate terminal.")
+        throw new Error("Cannot connect to server. Please check your internet connection or try again later.")
       }
       throw error
     }
@@ -156,7 +156,7 @@ export const doctorsAPI = {
       return response.json()
     } catch (error) {
       if (error instanceof TypeError && error.message.includes("fetch")) {
-        throw new Error("Cannot connect to server. Please run 'npm run json-server' in a separate terminal.")
+        throw new Error("Cannot connect to server. Please check your internet connection or try again later.")
       }
       throw error
     }
@@ -196,7 +196,7 @@ export const appointmentsAPI = {
       return response.json()
     } catch (error) {
       if (error instanceof TypeError && error.message.includes("fetch")) {
-        throw new Error("Cannot connect to server. Please run 'npm run json-server' in a separate terminal.")
+        throw new Error("Cannot connect to server. Please check your internet connection or try again later.")
       }
       throw error
     }
@@ -211,7 +211,7 @@ export const appointmentsAPI = {
       return response.json()
     } catch (error) {
       if (error instanceof TypeError && error.message.includes("fetch")) {
-        throw new Error("Cannot connect to server. Please run 'npm run json-server' in a separate terminal.")
+        throw new Error("Cannot connect to server. Please check your internet connection or try again later.")
       }
       throw error
     }
@@ -225,7 +225,7 @@ export const appointmentsAPI = {
       return response.json()
     } catch (error) {
       if (error instanceof TypeError && error.message.includes("fetch")) {
-        throw new Error("Cannot connect to server. Please run 'npm run json-server' in a separate terminal.")
+        throw new Error("Cannot connect to server. Please check your internet connection or try again later.")
       }
       throw error
     }
@@ -268,7 +268,7 @@ export const appointmentsAPI = {
       return response.json()
     } catch (error) {
       if (error instanceof TypeError && error.message.includes("fetch")) {
-        throw new Error("Cannot connect to server. Please run 'npm run json-server' in a separate terminal.")
+        throw new Error("Cannot connect to server. Please check your internet connection or try again later.")
       }
       throw error
     }

@@ -19,10 +19,20 @@ import { ServerStatus } from "@/components/ServerStatus"
 // Add this function at the top of the component, after the imports
 const testConnection = async () => {
   try {
-    const response = await fetch("https://doctor-api-u6mn.onrender.com/doctors", { method: "HEAD" })
-    return response.ok
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => {
+      controller.abort();
+    }, 5000);
+    
+    const response = await fetch("https://doctor-api-u6mn.onrender.com/doctors", { 
+      method: "HEAD",
+      signal: controller.signal
+    });
+    
+    clearTimeout(timeoutId);
+    return response.ok;
   } catch (error) {
-    return false
+    return false;
   }
 }
 
@@ -55,7 +65,7 @@ export default function AuthPage() {
       // Test connection first
       const isConnected = await testConnection()
       if (!isConnected) {
-        throw new Error("Cannot connect to server. Please make sure JSON Server is running on port 3001.")
+        throw new Error("Cannot connect to server. Please check your internet connection or try again later.")
       }
 
       if (isLogin) {
@@ -104,10 +114,10 @@ export default function AuthPage() {
                 <Heart className="w-10 h-10 text-white" />
               </div>
               <span className="text-5xl font-bold text-gray-800">
-                Medi<span className="text-blue-500">Care</span>
+                Practo<span className="text-blue-500">Care</span>
               </span>
             </div>
-            <h2 className="text-4xl font-bold mb-6 text-gray-800">Welcome to MediCare</h2>
+            <h2 className="text-4xl font-bold mb-6 text-gray-800">Welcome to PractoCare</h2>
             <p className="text-xl text-gray-600 max-w-lg leading-relaxed">
               Your trusted healthcare companion. Connect with qualified doctors and manage your health journey with
               ease.
@@ -125,10 +135,10 @@ export default function AuthPage() {
                   <Heart className="w-8 h-8 text-white" />
                 </div>
                 <span className="text-4xl font-bold text-gray-800">
-                  Medi<span className="text-blue-500">Care</span>
+                  Practo<span className="text-blue-500">Care</span>
                 </span>
               </div>
-              <h1 className="text-3xl font-bold text-gray-800 mb-2">{isLogin ? "Welcome Back!" : "Join MediCare"}</h1>
+              <h1 className="text-3xl font-bold text-gray-800 mb-2">{isLogin ? "Welcome Back!" : "Join PractoCare"}</h1>
               <p className="text-gray-600">
                 {isLogin ? "Sign in to continue your health journey" : "Start your healthcare journey today"}
               </p>
@@ -402,10 +412,10 @@ export default function AuthPage() {
                 <Heart className="w-8 h-8 text-white" />
               </div>
               <span className="text-4xl font-bold text-gray-800">
-                Medi<span className="text-blue-500">Care</span>
+                Practo<span className="text-blue-500">Care</span>
               </span>
             </div>
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">{isLogin ? "Welcome Back!" : "Join MediCare"}</h1>
+            <h1 className="text-3xl font-bold text-gray-800 mb-2">{isLogin ? "Welcome Back!" : "Join PractoCare"}</h1>
             <p className="text-gray-600">
               {isLogin ? "Sign in to continue your health journey" : "Start your healthcare journey today"}
             </p>

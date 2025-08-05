@@ -76,7 +76,7 @@ export function ModernFooter() {
                 <Heart className="w-6 h-6 text-white" />
               </motion.div>
               <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                MediCare
+                PractoCare
               </span>
             </motion.div>
             <p className="text-gray-400 leading-relaxed text-sm">
@@ -261,7 +261,7 @@ export function ModernFooter() {
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
-              { icon: Mail, text: "support@medicare.com", color: "text-blue-400" },
+              { icon: Mail, text: "support@practocare.com", color: "text-blue-400" },
               { icon: Phone, text: "+1 (555) 123-4567", color: "text-green-400" },
               { icon: MapPin, text: "123 Healthcare St, Medical City", color: "text-red-400" },
             ].map(({ icon: Icon, text, color }, index) => (
@@ -290,7 +290,7 @@ export function ModernFooter() {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <p className="text-gray-400 text-sm text-center sm:text-left">
-            © 2024 MediCare. All rights reserved. |
+            © 2024 PractoCare. All rights reserved. |
             <Link href="/privacy" className="hover:text-white transition-colors mx-1">
               Privacy Policy
             </Link>{" "}
