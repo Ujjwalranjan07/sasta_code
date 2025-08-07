@@ -22,6 +22,8 @@ import {
   X,
   Video,
   Building,
+  FileText,
+  Pill,
 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { Input } from "@/components/ui/input"
@@ -35,7 +37,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Label } from "@/components/ui/label"
-import { useSearchParams } from "next/navigation"
+import { useSearchParams, useRouter } from "next/navigation"
 import { format } from "date-fns" // For date formatting
 
 // Import the new calendar component
@@ -159,6 +161,8 @@ export default function DoctorAppointmentsPage() {
     }
   }
 
+  const router = useRouter()
+
   const updateAppointmentStatus = async (appointmentId: string, status: Appointment["status"]) => {
     console.log("Calling appointmentsAPI.updateStatus with:", { appointmentId, status })
     try {
@@ -169,6 +173,14 @@ export default function DoctorAppointmentsPage() {
         title: "Success",
         description: `Appointment ${status} successfully!`,
       })
+      
+      // If appointment is marked as completed, offer to create a prescription
+       if (status === "completed") {
+         const confirmed = window.confirm("Would you like to create a prescription for this patient?")
+         if (confirmed) {
+           router.push(`/doctor/prescriptions/new?appointmentId=${appointmentId}`)
+         }
+       }
     } catch (error) {
       console.error("Error updating appointment status via API:", error)
       toast({
@@ -281,6 +293,7 @@ export default function DoctorAppointmentsPage() {
                   onClick={() => updateAppointmentStatus(appointment.id, "completed")}
                   className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg hover:shadow-xl transition-all duration-300"
                 >
+                  <CheckCircle className="w-4 h-4 mr-2" />
                   Mark Complete
                 </Button>
                 <Dialog>
@@ -361,6 +374,27 @@ export default function DoctorAppointmentsPage() {
                   className="w-full border-red-500/30 text-red-300 hover:bg-red-500/10"
                 >
                   <X className="w-4 h-4" />
+                </Button>
+              </>
+            )}
+            {appointment.status === "completed" && (
+              <>
+                <Button
+                  size="sm"
+                  onClick={() => router.push(`/doctor/prescriptions/new?appointmentId=${appointment.id}`)}
+                  className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <FileText className="w-4 h-4 mr-2" />
+                  Create Prescription
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => router.push(`/doctor/prescriptions?appointmentId=${appointment.id}`)}
+                  className="w-full border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/10"
+                >
+                  <Pill className="w-4 h-4 mr-2" />
+                  View Prescriptions
                 </Button>
               </>
             )}

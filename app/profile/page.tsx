@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import { useAuth } from "@/contexts/AuthContext"
 import { ProtectedRoute } from "@/components/ProtectedRoute"
 import { Navbar } from "@/components/Navbar"
+import { PatientPrescriptions } from "@/components/PatientPrescriptions"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -458,6 +459,16 @@ export default function ProfilePage() {
                     </motion.div>
                   </CardContent>
                 </Card>
+
+                {/* Patient Prescriptions */}
+                <motion.div
+                  className="mt-6"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                >
+                  <PatientPrescriptions />
+                </motion.div>
               </motion.div>
             </div>
           </div>

@@ -273,4 +273,18 @@ export const appointmentsAPI = {
       throw error
     }
   },
+  async getById(id: string): Promise<Appointment> {
+    try {
+      const response = await fetch(`${BASE_URL}/appointments/${id}`)
+      if (!response.ok) {
+        throw new Error("Failed to fetch appointment")
+      }
+      return response.json()
+    } catch (error) {
+      if (error instanceof TypeError && error.message.includes("fetch")) {
+        throw new Error("Cannot connect to server. Please check your internet connection or try again later.")
+      }
+      throw error
+    }
+  },
 }

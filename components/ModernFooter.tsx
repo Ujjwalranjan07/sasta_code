@@ -182,6 +182,7 @@ export function ModernFooter() {
                 { href: "/doctor/dashboard", label: "Dashboard" },
                 { href: "/doctor/profile", label: "Manage Profile" },
                 { href: "/doctor/appointments", label: "Appointments" },
+                { href: "/doctor/prescriptions", label: "Prescriptions" },
                 { href: "/auth", label: "Join as Doctor" },
               ].map((link, index) => (
                 <motion.div

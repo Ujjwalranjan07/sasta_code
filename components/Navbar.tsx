@@ -5,7 +5,7 @@ import { useAuth } from "@/contexts/AuthContext"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { LogOut, User, Calendar, Home, Menu, Activity, Users, Clock, Bell } from "lucide-react"
+import { LogOut, User, Calendar, Home, Menu, Activity, Users, Clock, Bell, FileText } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 
@@ -37,6 +37,7 @@ export function Navbar() {
     { href: "/doctor/profile", label: "Profile", icon: User },
     { href: "/doctor/appointments", label: "Appointments", icon: Calendar },
     { href: "/doctor/patients", label: "Patients", icon: Users },
+    { href: "/doctor/prescriptions", label: "Prescriptions", icon: FileText },
     { href: "/doctor/analytics", label: "Analytics", icon: Activity },
     { href: "/doctor/schedule", label: "Schedule", icon: Clock },
   ]

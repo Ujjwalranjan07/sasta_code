@@ -355,5 +355,46 @@
       "symptoms": "",
       "fee": 80
     }
+  ],
+  "prescriptions": [
+    {
+      "id": "1",
+      "doctorId": "1",
+      "doctorName": "Dr. Sarah Johnson",
+      "patientId": "1",
+      "patientName": "John Doe",
+      "appointmentId": "1753686864324",
+      "date": "2025-07-30",
+      "medicines": [
+        {
+          "name": "Atorvastatin",
+          "dosage": "10mg once daily",
+          "duration": "30 days"
+        },
+        {
+          "name": "Aspirin",
+          "dosage": "81mg once daily",
+          "duration": "30 days"
+        }
+      ],
+      "notes": "Take with food. Avoid grapefruit juice with Atorvastatin. Follow up in 1 month."
+    },
+    {
+      "id": "2",
+      "doctorId": "4",
+      "doctorName": "Dr. Aisha Khan",
+      "patientId": "1",
+      "patientName": "John Doe",
+      "appointmentId": "1753686925998",
+      "date": "2025-07-29",
+      "medicines": [
+        {
+          "name": "Amoxicillin",
+          "dosage": "250mg three times daily",
+          "duration": "7 days"
+        }
+      ],
+      "notes": "Complete the full course even if symptoms improve. Drink plenty of fluids."
+    }
   ]
 }
